@@ -3033,7 +3033,7 @@ public abstract class AbstractID3v2Tag extends AbstractID3Tag implements Tag
                 AbstractTagFrameBody next = ((AbstractID3v2Frame) tagfield).getBody();
                 if (next instanceof FrameBodyTPOS)
                 {
-                    if (((FrameBodyTPOS) next).getDiscNo() != null)
+                    if (((FrameBodyTPOS) next).getDiscNoAsText() != null)
                     {
                         filteredList.add(tagfield);
                     }

@@ -325,14 +325,14 @@ public class PartOfSet extends AbstractString
         {
             try
             {
-                this.count = Integer.parseInt(count);
                 this.rawCount = count;
-                resetValueFromCounts();
+                this.count = Integer.parseInt(count);
             }
             catch (NumberFormatException nfe)
             {
 
             }
+            resetValueFromCounts();
         }
 
         public void setTotal(String total)
