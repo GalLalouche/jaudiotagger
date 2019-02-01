@@ -104,7 +104,7 @@ public class FrameBodyTXXX extends AbstractFrameBodyTextInfo implements ID3v24Fr
     public static final String MUSICBRAINZ_WORK_PART_LEVEL5_ID          = "MusicBrainz Work Part Level5 Id";
     public static final String MUSICBRAINZ_WORK_PART_LEVEL6_ID          = "MusicBrainz Work Part Level6 Id";
     public static final String MUSICIP_ID                               = "MusicIP PUID";
-    public static final String OPUS                                     = "Opus";
+    public static final String OPUS                                     = "OPUS";
     public static final String ORCHESTRA                                = "ORCHESTRA";
     public static final String ORCHESTRA_SORT                           = "Orchestra Sort";
     public static final String PART                                     = "Part";

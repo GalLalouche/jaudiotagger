@@ -152,7 +152,7 @@ public enum Mp4FieldKey
     MUSICBRAINZ_WORK_PART_LEVEL6_ID("com.apple.iTunes","MusicBrainz Work Part Level6 Id",  TEXT, Tagger.JAIKOZ),
     MUSICIP_PUID("com.apple.iTunes", "MusicIP PUID", TEXT, Tagger.PICARD),
     OCCASION("occa",Mp4TagFieldSubType.TEXT, TEXT, Tagger.MEDIA_MONKEY),
-    OPUS("com.apple.iTunes","Opus",  TEXT, Tagger.JAIKOZ),
+    OPUS("com.apple.iTunes","OPUS",  TEXT, Tagger.JAIKOZ),
     ORCHESTRA("com.apple.iTunes", "ORCHESTRA", TEXT, Tagger.PICARD),
     ORCHESTRA_SORT("com.apple.iTunes","Orchestra Sort",  TEXT, Tagger.JAIKOZ),
     ORIGINAL_ALBUM_TITLE("otit",Mp4TagFieldSubType.TEXT, TEXT, Tagger.MEDIA_MONKEY),
