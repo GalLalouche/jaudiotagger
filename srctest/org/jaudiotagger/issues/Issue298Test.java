@@ -117,7 +117,7 @@ public class Issue298Test extends AbstractTestCase
             tag.setField(tag.createField(FieldKey.ENSEMBLE_SORT,"EnsembleSort"));
             tag.setField(tag.createField(FieldKey.ORCHESTRA_SORT,"OrchestraSort"));
             tag.setField(tag.createField(FieldKey.ARRANGER_SORT,"ArrangerSort"));
-            tag.setField(tag.createField(FieldKey.OPUS,"Opus"));
+            tag.setField(tag.createField(FieldKey.OPUS,"OPUS"));
             tag.setField(tag.createField(FieldKey.CHOIR,"Choir"));
             tag.setField(tag.createField(FieldKey.RANKING,"Ranking"));
             tag.setField(tag.createField(FieldKey.SINGLE_DISC_TRACK_NO,"SingleDiscTrackNo"));
@@ -211,7 +211,7 @@ public class Issue298Test extends AbstractTestCase
             assertEquals("EnsembleSort",af.getTag().getFirst(FieldKey.ENSEMBLE_SORT));
             assertEquals("OrchestraSort",af.getTag().getFirst(FieldKey.ORCHESTRA_SORT));
             assertEquals("ArrangerSort",af.getTag().getFirst(FieldKey.ARRANGER_SORT));
-            assertEquals("Opus",af.getTag().getFirst(FieldKey.OPUS));
+            assertEquals("OPUS",af.getTag().getFirst(FieldKey.OPUS));
             assertEquals("Ranking",af.getTag().getFirst(FieldKey.RANKING));
             assertEquals("Choir",af.getTag().getFirst(FieldKey.CHOIR));
             assertEquals("SingleDiscTrackNo",af.getTag().getFirst(FieldKey.SINGLE_DISC_TRACK_NO));
@@ -447,7 +447,7 @@ public class Issue298Test extends AbstractTestCase
             tag.setField(tag.createField(FieldKey.ORCHESTRA_SORT,"OrchestraSort"));
             tag.setField(tag.createField(FieldKey.PERFORMER_NAME_SORT,"Performer"));
             tag.setField(tag.createField(FieldKey.ARRANGER_SORT,"ArrangerSort"));
-            tag.setField(tag.createField(FieldKey.OPUS,"Opus"));
+            tag.setField(tag.createField(FieldKey.OPUS,"OPUS"));
             tag.setField(tag.createField(FieldKey.SINGLE_DISC_TRACK_NO,"SingleDiscTrackNo"));
             tag.setField(tag.createField(FieldKey.PERIOD,"Period"));
             tag.setField(tag.createField(FieldKey.PART_TYPE,"Composition Type"));
@@ -573,7 +573,7 @@ public class Issue298Test extends AbstractTestCase
             assertEquals("EnsembleSort",af.getTag().getFirst(FieldKey.ENSEMBLE_SORT));
             assertEquals("OrchestraSort",af.getTag().getFirst(FieldKey.ORCHESTRA_SORT));
             assertEquals("ArrangerSort",af.getTag().getFirst(FieldKey.ARRANGER_SORT));
-            assertEquals("Opus",af.getTag().getFirst(FieldKey.OPUS));
+            assertEquals("OPUS",af.getTag().getFirst(FieldKey.OPUS));
             assertEquals("Ranking",af.getTag().getFirst(FieldKey.RANKING));
             assertEquals("Choir",af.getTag().getFirst(FieldKey.CHOIR));
 
@@ -717,7 +717,7 @@ public class Issue298Test extends AbstractTestCase
             tag.setField(tag.createField(FieldKey.ORCHESTRA_SORT,"OrchestraSort"));
             tag.setField(tag.createField(FieldKey.PERFORMER_NAME_SORT,"Performer"));
             tag.setField(tag.createField(FieldKey.ARRANGER_SORT,"ArrangerSort"));
-            tag.setField(tag.createField(FieldKey.OPUS,"Opus"));
+            tag.setField(tag.createField(FieldKey.OPUS,"OPUS"));
             tag.setField(tag.createField(FieldKey.SINGLE_DISC_TRACK_NO,"SingleDiscTrackNo"));
             tag.setField(tag.createField(FieldKey.PERIOD,"Period"));
             tag.setField(tag.createField(FieldKey.PART_TYPE,"Composition Type"));
@@ -827,7 +827,7 @@ public class Issue298Test extends AbstractTestCase
             assertEquals("EnsembleSort",af.getTag().getFirst(FieldKey.ENSEMBLE_SORT));
             assertEquals("OrchestraSort",af.getTag().getFirst(FieldKey.ORCHESTRA_SORT));
             assertEquals("ArrangerSort",af.getTag().getFirst(FieldKey.ARRANGER_SORT));
-            assertEquals("Opus",af.getTag().getFirst(FieldKey.OPUS));
+            assertEquals("OPUS",af.getTag().getFirst(FieldKey.OPUS));
             assertEquals("Ranking",af.getTag().getFirst(FieldKey.RANKING));
             assertEquals("Choir",af.getTag().getFirst(FieldKey.CHOIR));
 
@@ -960,7 +960,7 @@ public class Issue298Test extends AbstractTestCase
             tag.setField(tag.createField(FieldKey.ORCHESTRA_SORT,"OrchestraSort"));
             tag.setField(tag.createField(FieldKey.PERFORMER_NAME_SORT,"Performer"));
             tag.setField(tag.createField(FieldKey.ARRANGER_SORT,"ArrangerSort"));
-            tag.setField(tag.createField(FieldKey.OPUS,"Opus"));
+            tag.setField(tag.createField(FieldKey.OPUS,"OPUS"));
             tag.setField(tag.createField(FieldKey.CHOIR,"Choir"));
             tag.setField(tag.createField(FieldKey.RANKING,"Ranking"));
 
@@ -1069,7 +1069,7 @@ public class Issue298Test extends AbstractTestCase
             assertEquals("EnsembleSort",af.getTag().getFirst(FieldKey.ENSEMBLE_SORT));
             assertEquals("OrchestraSort",af.getTag().getFirst(FieldKey.ORCHESTRA_SORT));
             assertEquals("ArrangerSort",af.getTag().getFirst(FieldKey.ARRANGER_SORT));
-            assertEquals("Opus",af.getTag().getFirst(FieldKey.OPUS));
+            assertEquals("OPUS",af.getTag().getFirst(FieldKey.OPUS));
             assertEquals("Ranking",af.getTag().getFirst(FieldKey.RANKING));
             assertEquals("Choir",af.getTag().getFirst(FieldKey.CHOIR));
 
@@ -1198,7 +1198,7 @@ public class Issue298Test extends AbstractTestCase
             tag.setField(tag.createField(FieldKey.ORCHESTRA_SORT,"OrchestraSort"));
             tag.setField(tag.createField(FieldKey.PERFORMER_NAME_SORT,"Performer"));
             tag.setField(tag.createField(FieldKey.ARRANGER_SORT,"ArrangerSort"));
-            tag.setField(tag.createField(FieldKey.OPUS,"Opus"));
+            tag.setField(tag.createField(FieldKey.OPUS,"OPUS"));
             tag.setField(tag.createField(FieldKey.CHOIR,"Choir"));
             tag.setField(tag.createField(FieldKey.RANKING,"Ranking"));
             tag.setField(tag.createField(FieldKey.MOVEMENT,"Movement"));
@@ -1333,7 +1333,7 @@ public class Issue298Test extends AbstractTestCase
             assertEquals("EnsembleSort",af.getTag().getFirst(FieldKey.ENSEMBLE_SORT));
             assertEquals("OrchestraSort",af.getTag().getFirst(FieldKey.ORCHESTRA_SORT));
             assertEquals("ArrangerSort",af.getTag().getFirst(FieldKey.ARRANGER_SORT));
-            assertEquals("Opus",af.getTag().getFirst(FieldKey.OPUS));
+            assertEquals("OPUS",af.getTag().getFirst(FieldKey.OPUS));
             assertEquals("Ranking",af.getTag().getFirst(FieldKey.RANKING));
             assertEquals("Choir",af.getTag().getFirst(FieldKey.CHOIR));
 
@@ -1466,7 +1466,7 @@ public class Issue298Test extends AbstractTestCase
             tag.setField(tag.createField(FieldKey.ORCHESTRA_SORT,"OrchestraSort"));
             tag.setField(tag.createField(FieldKey.PERFORMER_NAME_SORT,"Performer"));
             tag.setField(tag.createField(FieldKey.ARRANGER_SORT,"ArrangerSort"));
-            tag.setField(tag.createField(FieldKey.OPUS,"Opus"));
+            tag.setField(tag.createField(FieldKey.OPUS,"OPUS"));
             tag.setField(tag.createField(FieldKey.CHOIR,"Choir"));
             tag.setField(tag.createField(FieldKey.RANKING,"Ranking"));
             tag.setField(tag.createField(FieldKey.SINGLE_DISC_TRACK_NO,"SingleDiscTrackNo"));
@@ -1574,7 +1574,7 @@ public class Issue298Test extends AbstractTestCase
             assertEquals("EnsembleSort",af.getTag().getFirst(FieldKey.ENSEMBLE_SORT));
             assertEquals("OrchestraSort",af.getTag().getFirst(FieldKey.ORCHESTRA_SORT));
             assertEquals("ArrangerSort",af.getTag().getFirst(FieldKey.ARRANGER_SORT));
-            assertEquals("Opus",af.getTag().getFirst(FieldKey.OPUS));
+            assertEquals("OPUS",af.getTag().getFirst(FieldKey.OPUS));
             assertEquals("Ranking",af.getTag().getFirst(FieldKey.RANKING));
             assertEquals("Choir",af.getTag().getFirst(FieldKey.CHOIR));
             assertEquals("SingleDiscTrackNo",af.getTag().getFirst(FieldKey.SINGLE_DISC_TRACK_NO));
@@ -1706,7 +1706,7 @@ public class Issue298Test extends AbstractTestCase
             tag.setField(tag.createField(FieldKey.ORCHESTRA_SORT,"OrchestraSort"));
             tag.setField(tag.createField(FieldKey.PERFORMER_NAME_SORT,"Performer"));
             tag.setField(tag.createField(FieldKey.ARRANGER_SORT,"ArrangerSort"));
-            tag.setField(tag.createField(FieldKey.OPUS,"Opus"));
+            tag.setField(tag.createField(FieldKey.OPUS,"OPUS"));
             tag.setField(tag.createField(FieldKey.CHOIR,"Choir"));
             tag.setField(tag.createField(FieldKey.RANKING,"Ranking"));
 
@@ -1818,7 +1818,7 @@ public class Issue298Test extends AbstractTestCase
             assertEquals("EnsembleSort",af.getTag().getFirst(FieldKey.ENSEMBLE_SORT));
             assertEquals("OrchestraSort",af.getTag().getFirst(FieldKey.ORCHESTRA_SORT));
             assertEquals("ArrangerSort",af.getTag().getFirst(FieldKey.ARRANGER_SORT));
-            assertEquals("Opus",af.getTag().getFirst(FieldKey.OPUS));
+            assertEquals("OPUS",af.getTag().getFirst(FieldKey.OPUS));
             assertEquals("Ranking",af.getTag().getFirst(FieldKey.RANKING));
             assertEquals("Choir",af.getTag().getFirst(FieldKey.CHOIR));
 
