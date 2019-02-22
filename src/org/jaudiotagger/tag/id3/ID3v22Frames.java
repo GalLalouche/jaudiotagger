@@ -451,6 +451,7 @@ public class ID3v22Frames extends ID3Frames
         tagFieldToId3.put(FieldKey.PART, ID3v22FieldKey.PART);
         tagFieldToId3.put(FieldKey.PART_NUMBER, ID3v22FieldKey.PART_NUMBER);
         tagFieldToId3.put(FieldKey.PART_TYPE, ID3v22FieldKey.PART_TYPE);
+        tagFieldToId3.put(FieldKey.PERFORMANCE_YEAR, ID3v22FieldKey.PERFORMANCE_YEAR);
         tagFieldToId3.put(FieldKey.PERFORMER, ID3v22FieldKey.PERFORMER);
         tagFieldToId3.put(FieldKey.PERFORMER_NAME, ID3v22FieldKey.PERFORMER_NAME);
         tagFieldToId3.put(FieldKey.PERFORMER_NAME_SORT, ID3v22FieldKey.PERFORMER_NAME_SORT);

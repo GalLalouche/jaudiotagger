@@ -169,6 +169,7 @@ public enum VorbisCommentFieldKey
     PART("PART",EnumSet.of(Tagger.JAIKOZ,Tagger.ROON)),
     PART_NUMBER("PARTNUMBER",EnumSet.of(Tagger.XIPH)),
     PART_TYPE("PART_TYPE",EnumSet.of(Tagger.JAIKOZ)),
+    PERFORMANCE_YEAR("PERFORMANCEYEAR"),
     PERFORMER("PERFORMER",EnumSet.of(Tagger.XIPH,Tagger.PICARD)),
     PERFORMER_NAME("PERFORMER_NAME",EnumSet.of(Tagger.JAIKOZ)),
     PERFORMER_NAME_SORT("PERFORMER_NAME_SORT",EnumSet.of(Tagger.JAIKOZ)),
