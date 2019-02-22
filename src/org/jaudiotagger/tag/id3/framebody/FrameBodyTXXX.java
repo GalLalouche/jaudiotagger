@@ -110,6 +110,7 @@ public class FrameBodyTXXX extends AbstractFrameBodyTextInfo implements ID3v24Fr
     public static final String PART                                     = "Part";
     public static final String PART_NUMBER                              = "Part No";
     public static final String PART_TYPE                                = "Part Type";
+    public static final String PERFORMANCE_YEAR                         = "PERFORMANCEYEAR";
     public static final String PERFORMER_NAME                           = "Performer Name";
     public static final String PERFORMER_NAME_SORT                      = "Performer Name Sort";
     public static final String PERIOD                                   = "Period";

@@ -105,6 +105,7 @@ public enum FieldKey
     PART,
     PART_NUMBER,
     PART_TYPE,
+    PERFORMANCE_YEAR,
     PERFORMER,
     PERFORMER_NAME,
     PERFORMER_NAME_SORT,
