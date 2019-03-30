@@ -471,6 +471,8 @@ public class ID3v23Frames extends ID3Frames
         tagFieldToId3.put(FieldKey.RATING, ID3v23FieldKey.RATING);
         tagFieldToId3.put(FieldKey.RECORD_LABEL, ID3v23FieldKey.RECORD_LABEL);
         tagFieldToId3.put(FieldKey.REMIXER, ID3v23FieldKey.REMIXER);
+        tagFieldToId3.put(FieldKey.REPLAYGAIN_TRACK_GAIN, ID3v23FieldKey.REPLAYGAIN_TRACK_GAIN);
+        tagFieldToId3.put(FieldKey.REPLAYGAIN_TRACK_PEAK, ID3v23FieldKey.REPLAYGAIN_TRACK_PEAK);
         tagFieldToId3.put(FieldKey.SCRIPT, ID3v23FieldKey.SCRIPT);
         tagFieldToId3.put(FieldKey.SINGLE_DISC_TRACK_NO, ID3v23FieldKey.SINGLE_DISC_TRACK_NO);
         tagFieldToId3.put(FieldKey.SUBTITLE, ID3v23FieldKey.SUBTITLE);

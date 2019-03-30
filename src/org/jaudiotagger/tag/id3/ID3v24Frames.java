@@ -470,6 +470,8 @@ public class ID3v24Frames extends ID3Frames
         tagFieldToId3.put(FieldKey.RATING, ID3v24FieldKey.RATING);
         tagFieldToId3.put(FieldKey.RECORD_LABEL, ID3v24FieldKey.RECORD_LABEL);
         tagFieldToId3.put(FieldKey.REMIXER, ID3v24FieldKey.REMIXER);
+        tagFieldToId3.put(FieldKey.REPLAYGAIN_TRACK_GAIN, ID3v24FieldKey.REPLAYGAIN_TRACK_GAIN);
+        tagFieldToId3.put(FieldKey.REPLAYGAIN_TRACK_PEAK, ID3v24FieldKey.REPLAYGAIN_TRACK_PEAK);
         tagFieldToId3.put(FieldKey.SCRIPT, ID3v24FieldKey.SCRIPT);
         tagFieldToId3.put(FieldKey.SINGLE_DISC_TRACK_NO, ID3v24FieldKey.SINGLE_DISC_TRACK_NO);
         tagFieldToId3.put(FieldKey.SUBTITLE, ID3v24FieldKey.SUBTITLE);
@@ -480,6 +482,8 @@ public class ID3v24Frames extends ID3Frames
         tagFieldToId3.put(FieldKey.TITLE_SORT, ID3v24FieldKey.TITLE_SORT);
         tagFieldToId3.put(FieldKey.TONALITY, ID3v24FieldKey.TONALITY);
         tagFieldToId3.put(FieldKey.TRACK, ID3v24FieldKey.TRACK);
+        tagFieldToId3.put(FieldKey.REPLAYGAIN_TRACK_GAIN, ID3v24FieldKey.REPLAYGAIN_TRACK_GAIN);
+        tagFieldToId3.put(FieldKey.REPLAYGAIN_TRACK_PEAK, ID3v24FieldKey.REPLAYGAIN_TRACK_PEAK);
         tagFieldToId3.put(FieldKey.TRACK_TOTAL, ID3v24FieldKey.TRACK_TOTAL);
         tagFieldToId3.put(FieldKey.URL_DISCOGS_ARTIST_SITE, ID3v24FieldKey.URL_DISCOGS_ARTIST_SITE);
         tagFieldToId3.put(FieldKey.URL_DISCOGS_RELEASE_SITE, ID3v24FieldKey.URL_DISCOGS_RELEASE_SITE);

@@ -115,6 +115,8 @@ public class FrameBodyTXXX extends AbstractFrameBodyTextInfo implements ID3v24Fr
     public static final String PERFORMER_NAME_SORT                      = "Performer Name Sort";
     public static final String PERIOD                                   = "Period";
     public static final String RANKING                                  = "Ranking";
+    public static final String REPLAYGAIN_TRACK_GAIN                    = "replaygain_track_gain";
+    public static final String REPLAYGAIN_TRACK_PEAK                    = "replaygain_track_peak";
     public static final String SCRIPT                                   = "Script";
     public static final String SINGLE_DISC_TRACK_NO                     = "Single Disc Track No";
     public static final String TAGS                                     = "TAGS";
