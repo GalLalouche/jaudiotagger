@@ -166,6 +166,8 @@ public class FrameBodyTXXX extends AbstractFrameBodyTextInfo implements ID3v24Fr
     public static final String RECORDING_ENGINEER                       = "RECORDING_ENGINEER";
     public static final String RECORDING_ENGINEER_SORT                  = "RECORDING_ENGINEER_SORT";
     public static final String REMIXER                                  = "REMIXER";
+    public static final String REPLAYGAIN_TRACK_GAIN                    = "replaygain_track_gain";
+    public static final String REPLAYGAIN_TRACK_PEAK                    = "replaygain_track_peak";
     public static final String ROONALBUMTAG                             = "ROONALBUMTAG";
     public static final String ROONTRACKTAG                             = "ROONTRACKTAG";
     public static final String SCRIPT                                   = "SCRIPT";
