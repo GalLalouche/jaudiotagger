@@ -39,6 +39,7 @@ public class WavInfoChunk
         while(chunkData.remaining()>= IffHeaderChunk.TYPE_LENGTH)
         {
             String id       = Utils.readFourBytesAsChars(chunkData);
+
             //Padding
             if(id.trim().isEmpty())
             {
@@ -46,17 +47,20 @@ public class WavInfoChunk
             }
             int    size     = chunkData.getInt();
 
+            //Check Identifier is valid, #655 we allow numeric characters although not strictly correctly lets us process
+            //slightly wrong files but dont allow any other more unusual characters
             if(
-                    (!Character.isAlphabetic(id.charAt(0)))||
-                    (!Character.isAlphabetic(id.charAt(1)))||
-                    (!Character.isAlphabetic(id.charAt(2)))||
-                    (!Character.isAlphabetic(id.charAt(3)))
+                    (!Character.isAlphabetic(id.charAt(0)) && !Character.isDigit(id.charAt(0)) )||
+                    (!Character.isAlphabetic(id.charAt(1))  && !Character.isDigit(id.charAt(1)) )||
+                    (!Character.isAlphabetic(id.charAt(2))  && !Character.isDigit(id.charAt(2)))||
+                    (!Character.isAlphabetic(id.charAt(3))  && !Character.isDigit(id.charAt(3)))
                )
             {
-                logger.severe(loggingName + "LISTINFO appears corrupt, ignoring:"+id+":"+size);
+                logger.severe(loggingName + "LISTINFO appears corrupt, non-alphabetical characters ignoring:"+id+":"+size);
                 return false;
             }
 
+            //Read data for identifier
             String value =null;
             try
             {
@@ -64,10 +68,11 @@ public class WavInfoChunk
             }
             catch(BufferUnderflowException bue)
             {
-                logger.log(Level.SEVERE, loggingName + "LISTINFO appears corrupt, ignoring:"+bue.getMessage(), bue);
+                logger.log(Level.SEVERE, loggingName + "LISTINFO appears corrupt, buffer underflow, ignoring:"+bue.getMessage(), bue);
                 return false;
             }
 
+            //Is it known identifer
             logger.config(loggingName + "Result:" + id + ":" + size + ":" + value + ":");
             WavInfoIdentifier wii = WavInfoIdentifier.getByCode(id);
             if(wii!=null && wii.getFieldKey()!=null)
