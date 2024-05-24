@@ -71,6 +71,7 @@ public class FrameBodyTXXX extends AbstractFrameBodyTextInfo implements ID3v24Fr
     public static final String CLASSICAL_NICKNAME           = "CLASSICAL_NICKNAME";
     public static final String CONDUCTOR_SORT               = "CONDUCTOR_SORT";
     public static final String COUNTRY                      = "Country";
+    public static final String CREDITS                      = "CREDITS";
     public static final String DJMIXER                      = "DJMIXER";
     public static final String DJMIXER_SORT                 = "DJMIXER_SORT";
     public static final String ENGINEER                     = "ENGINEER";

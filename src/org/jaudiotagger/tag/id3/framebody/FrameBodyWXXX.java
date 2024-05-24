@@ -38,7 +38,8 @@ import java.util.List;
  */
 public class FrameBodyWXXX extends AbstractFrameBodyUrlLink implements ID3v24FrameBody, ID3v23FrameBody
 {
-
+    public static final String URL_BANDCAMP_ARTIST_SITE = "BANDCAMP_ARTIST";
+    public static final String URL_BANDCAMP_RELEASE_SITE = "BANDCAMP_RELEASE";
     public static final String URL_DISCOGS_RELEASE_SITE = "DISCOGS_RELEASE";
     public static final String URL_WIKIPEDIA_RELEASE_SITE = "WIKIPEDIA_RELEASE";
     public static final String URL_OFFICIAL_RELEASE_SITE = "OFFICIAL_RELEASE";
