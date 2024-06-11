@@ -3,11 +3,13 @@ package org.jaudiotagger.audio.wav.chunk;
 import org.jaudiotagger.audio.generic.Utils;
 import org.jaudiotagger.audio.iff.IffHeaderChunk;
 import org.jaudiotagger.tag.FieldDataInvalidException;
+import org.jaudiotagger.tag.TagOptionSingleton;
 import org.jaudiotagger.tag.wav.WavInfoTag;
 import org.jaudiotagger.tag.wav.WavTag;
 
 import java.nio.BufferUnderflowException;
 import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -60,11 +62,19 @@ public class WavInfoChunk
                 return false;
             }
 
+            //Sometimes applications default to users default charset than sticking by the spec which specifies UTF-8
+            Charset charset =  StandardCharsets.UTF_8;
+            if(TagOptionSingleton.getInstance().getOverrideCharset()!=null)
+            {
+                charset = TagOptionSingleton.getInstance().getOverrideCharset();
+                logger.severe(loggingName + "Charset used is:"+charset.displayName());
+            }
+
             //Read data for identifier
             String value =null;
             try
             {
-                value = Utils.getString(chunkData, 0, size, StandardCharsets.UTF_8);
+                value = Utils.getString(chunkData, 0, size, charset);
             }
             catch(BufferUnderflowException bue)
             {

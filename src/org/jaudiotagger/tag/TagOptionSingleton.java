@@ -43,6 +43,7 @@ import org.jaudiotagger.tag.reference.Languages;
 import org.jaudiotagger.tag.vorbiscomment.VorbisAlbumArtistReadOptions;
 import org.jaudiotagger.tag.vorbiscomment.VorbisAlbumArtistSaveOptions;
 
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -380,6 +381,7 @@ public class TagOptionSingleton
      */
     private boolean preserveFileIdentity = true;
 
+    private Charset overrideCharset = null;
     /**
      * 
      */
@@ -957,6 +959,8 @@ public class TagOptionSingleton
         id3v2Version = ID3V2Version.ID3_V23;
         checkIsWritable = false;
         preserveFileIdentity = true;
+        overrideCharset = null;
+
         //default all lyrics3 fields to save. id3v1 fields are individual
         // settings. id3v2 fields are always looked at to save.
         Iterator<String> iterator = Lyrics3v2Fields.getInstanceOf().getIdToValueMap().keySet().iterator();
@@ -1417,5 +1421,15 @@ public class TagOptionSingleton
     public void setWriteWavForTwonky(boolean isWriteWavForTwonky)
     {
         this.isWriteWavForTwonky = isWriteWavForTwonky;
+    }
+
+    public Charset getOverrideCharset()
+    {
+        return overrideCharset;
+    }
+
+    public void setOverrideCharset(Charset overrideCharset)
+    {
+        this.overrideCharset = overrideCharset;
     }
 }
