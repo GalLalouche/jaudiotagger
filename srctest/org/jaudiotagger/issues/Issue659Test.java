@@ -15,26 +15,26 @@ import java.nio.charset.Charset;
 /**
  * Test, useful for just reading file info when actually encoded as Japanese
  */
-public class Issue657Test extends AbstractTestCase
+public class Issue659Test extends AbstractTestCase
 {
     /**
-     * In this file the tags in the Riff are encoded as CP932, so we set overide charset to read correctly
-     * and then write to new ID3 tag using encoding UTF-16 because that can handle Japanese charsets
+     * Fields in the ID3 tag are encoded as UTF-16, but encoding bit is set to zero indicating ISO-8859-1 so we
+     * need to set override charset to force correct read
      *
      * @throws Exception
      */
-    public void testFixBadWavRiffEncoding() throws Exception
+    public void testFixBadWavId3v23Encoding() throws Exception
     {
         final TagOptionSingleton tagOptions = TagOptionSingleton.getInstance();
         tagOptions.setToDefault();
         tagOptions.setWavOptions(WavOptions.READ_ID3_ONLY_AND_SYNC);
         tagOptions.setWavSaveOptions(WavSaveOptions.SAVE_ACTIVE);
-        tagOptions.setOverrideCharsetForInfo(true);
-        tagOptions.setOverrideCharset(Charset.forName("CP932"));
+        tagOptions.setOverrideCharsetForId3(true);
+        tagOptions.setOverrideCharset(Charset.forName("UTF-16"));
         tagOptions.setResetTextEncodingForExistingFrames(true);
         tagOptions.setID3V2Version(ID3V2Version.ID3_V23);
 
-        File orig = new File("testdata", "test659.wav");
+        File orig = new File("testdata", "test660.wav");
         if (!orig.isFile())
         {
             System.err.println("Unable to test file - not available");
@@ -45,7 +45,7 @@ public class Issue657Test extends AbstractTestCase
         try
         {
             //Read using the encoding
-            File testFile = AbstractTestCase.copyAudioToTmp("test659.wav");
+            File testFile = AbstractTestCase.copyAudioToTmp("test660.wav");
             AudioFile af = AudioFileIO.read(testFile);
             assertNotNull(af.getTag());
             System.out.println(af.getTag());

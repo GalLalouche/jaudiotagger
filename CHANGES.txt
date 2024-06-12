@@ -5,6 +5,7 @@ Summarise Changes
 #655:Issue writing to Wav file because INFO chunk has invalid field and this prevents reading of subsequent data chunk
 #656:Add support for CREDITS,URL_BANDCAMP_ARTIST_SITE and URL_BANDCAMP_RELEASE_SITE
 #658:For Wav Files allow to read Riff Files using a different encoding to the official ISO-8859-1 encoding
+#659:For files that have ID3 tag allow for frames with text encoding set to zero (ISO-8859-1) allow to read as different encoding instead
 
 3.0.1
 #039:Fixes required due to PR69 changes to AbstractID3v2Tag.getFrame() so that it now always returns list

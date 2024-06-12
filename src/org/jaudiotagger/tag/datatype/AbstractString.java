@@ -23,6 +23,7 @@
  */
 package org.jaudiotagger.tag.datatype;
 
+import org.jaudiotagger.tag.TagOptionSingleton;
 import org.jaudiotagger.tag.id3.AbstractTagFrameBody;
 import org.jaudiotagger.tag.id3.valuepair.TextEncoding;
 
@@ -127,6 +128,10 @@ public abstract class AbstractString extends AbstractDataType
     }
 
     /**
+     * If charset encoding byte to zero this should be read as ISO-8859-1 unless overridecharset is set to allow to read as
+     * different charset in case user has used non-standard charset instead, this is quite common if based in countries
+     * where the default language is not English
+     *
      * If they have specified UTF-16 then decoder works out by looking at BOM
      * but if missing we have to make an educated guess otherwise just use
      * specified decoder
@@ -136,20 +141,28 @@ public abstract class AbstractString extends AbstractDataType
      */
     protected CharsetDecoder getCorrectDecoder(ByteBuffer inBuffer)
     {
+        Charset charset = getTextEncodingCharSet();
+        if(charset==StandardCharsets.ISO_8859_1
+                && TagOptionSingleton.getInstance().isOverrideCharsetForId3()
+                && TagOptionSingleton.getInstance().getOverrideCharset()!=null)
+        {
+            charset = TagOptionSingleton.getInstance().getOverrideCharset();
+        }
+
         CharsetDecoder decoder=null;
         if(inBuffer.remaining()<=2)
         {
-            decoder = getTextEncodingCharSet().newDecoder();
+            decoder = charset.newDecoder();
             decoder.reset();
             return decoder;
         }
 
-        if(getTextEncodingCharSet()== StandardCharsets.UTF_16)
+        if(charset == StandardCharsets.UTF_16)
         {
             if(inBuffer.getChar(0)==0xfffe || inBuffer.getChar(0)==0xfeff)
             {
                 //Get the Specified Decoder
-                decoder = getTextEncodingCharSet().newDecoder();
+                decoder = charset.newDecoder();
                 decoder.reset();
             }
             else
@@ -168,7 +181,7 @@ public abstract class AbstractString extends AbstractDataType
         }
         else
         {
-            decoder = getTextEncodingCharSet().newDecoder();
+            decoder = charset.newDecoder();
             decoder.reset();
         }
         return decoder;

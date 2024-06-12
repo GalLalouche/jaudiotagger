@@ -69,7 +69,7 @@ public class TextEncodedStringSizeTerminated extends AbstractString
      * delimiter.
      *
      * Must take into account the text encoding defined in the Encoding Object
-     * ID3 Text Frames often allow multiple strings seperated by the null char
+     * ID3 Text Frames often allow multiple strings separated by the null char
      * appropriate for the encoding.
      *
      * @param arr    this is the buffer for the frame

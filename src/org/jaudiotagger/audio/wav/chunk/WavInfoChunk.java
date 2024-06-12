@@ -64,7 +64,7 @@ public class WavInfoChunk
 
             //Sometimes applications default to users default charset than sticking by the spec which specifies UTF-8
             Charset charset =  StandardCharsets.UTF_8;
-            if(TagOptionSingleton.getInstance().getOverrideCharset()!=null)
+            if(TagOptionSingleton.getInstance().isOverrideCharsetForInfo() && TagOptionSingleton.getInstance().getOverrideCharset()!=null)
             {
                 charset = TagOptionSingleton.getInstance().getOverrideCharset();
                 logger.severe(loggingName + "Charset used is:"+charset.displayName());
