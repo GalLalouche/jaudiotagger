@@ -23,7 +23,7 @@ public class Issue657Test extends AbstractTestCase
      *
      * @throws Exception
      */
-    public void testFixBadWavRiffEncoding() throws Exception
+    public void testFixBadWavListInfoEncoding() throws Exception
     {
         final TagOptionSingleton tagOptions = TagOptionSingleton.getInstance();
         tagOptions.setToDefault();
@@ -33,6 +33,7 @@ public class Issue657Test extends AbstractTestCase
         tagOptions.setOverrideCharset(Charset.forName("CP932"));
         tagOptions.setResetTextEncodingForExistingFrames(true);
         tagOptions.setID3V2Version(ID3V2Version.ID3_V23);
+        tagOptions.addOverrideCharsetFields(FieldKey.ARTIST);
 
         File orig = new File("testdata", "test659.wav");
         if (!orig.isFile())
@@ -49,8 +50,24 @@ public class Issue657Test extends AbstractTestCase
             AudioFile af = AudioFileIO.read(testFile);
             assertNotNull(af.getTag());
             System.out.println(af.getTag());
-            String カルロス = "カルロス";
-            assertEquals(af.getTag().getFirst(FieldKey.ARTIST), カルロス + "・モントーヤ");
+
+            //Reads artist correctly because specified as an aoveride field
+            assertEquals(af.getTag().getFirst(FieldKey.ARTIST), "カルロス・モントーヤ");
+
+            //but not album because not specified as a field
+            assertEquals(af.getTag().getFirst(FieldKey.ALBUM), "�x�X�g�E�I�u�E�t�������R�E�M�^�[");
+
+            //So add other fields and retry
+            tagOptions.addOverrideCharsetFields(FieldKey.GENRE);
+            tagOptions.addOverrideCharsetFields(FieldKey.ALBUM);
+            tagOptions.addOverrideCharsetFields(FieldKey.TITLE);
+
+            af = AudioFileIO.read(testFile);
+            assertNotNull(af.getTag());
+            System.out.println(af.getTag());
+
+            assertEquals(af.getTag().getFirst(FieldKey.ARTIST), "カルロス・モントーヤ");
+            assertEquals(af.getTag().getFirst(FieldKey.ALBUM), "ベスト・オブ・フラメンコ・ギター");
 
             //Then save back so should write correctly to id3
             af.getTagOrCreateAndSetDefault().setField(FieldKey.ARTIST,"カルロス");
@@ -60,6 +77,8 @@ public class Issue657Test extends AbstractTestCase
             tagOptions.setOverrideCharset(null);
             af = AudioFileIO.read(testFile);
             assertNotNull(af.getTag());
+            assertEquals(af.getTag().getFirst(FieldKey.ARTIST), "カルロス");
+            assertEquals(af.getTag().getFirst(FieldKey.ALBUM), "ベスト・オブ・フラメンコ・ギター");
             System.out.println(af.getTag());
         }
         catch(Exception e)

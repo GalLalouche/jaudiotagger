@@ -3,6 +3,7 @@ package org.jaudiotagger.audio.wav.chunk;
 import org.jaudiotagger.audio.generic.Utils;
 import org.jaudiotagger.audio.iff.IffHeaderChunk;
 import org.jaudiotagger.tag.FieldDataInvalidException;
+import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.TagOptionSingleton;
 import org.jaudiotagger.tag.wav.WavInfoTag;
 import org.jaudiotagger.tag.wav.WavTag;
@@ -11,6 +12,7 @@ import java.nio.BufferUnderflowException;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.util.EnumSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -38,6 +40,8 @@ public class WavInfoChunk
      */
     public  boolean readChunks(ByteBuffer chunkData)
     {
+        EnumSet<FieldKey> overrideFieldKeys = TagOptionSingleton.getInstance().getOverrideCharsetFields();
+
         while(chunkData.remaining()>= IffHeaderChunk.TYPE_LENGTH)
         {
             String id       = Utils.readFourBytesAsChars(chunkData);
@@ -62,12 +66,19 @@ public class WavInfoChunk
                 return false;
             }
 
+            //Find FieldKey relating to this field and if one of the override fields keys
+            Charset charset = StandardCharsets.UTF_8;
+
             //Sometimes applications default to users default charset than sticking by the spec which specifies UTF-8
-            Charset charset =  StandardCharsets.UTF_8;
-            if(TagOptionSingleton.getInstance().isOverrideCharsetForInfo() && TagOptionSingleton.getInstance().getOverrideCharset()!=null)
+            //if we have options to override set and the field key is one of the fields we want to override for use override chatset
+            if (TagOptionSingleton.getInstance().isOverrideCharsetForInfo() && TagOptionSingleton.getInstance().getOverrideCharset() != null)
             {
-                charset = TagOptionSingleton.getInstance().getOverrideCharset();
-                logger.severe(loggingName + "Charset used is:"+charset.displayName());
+                WavInfoIdentifier wii = WavInfoIdentifier.getByCode(id);
+                if (overrideFieldKeys.contains(wii.getFieldKey()))
+                {
+                    charset = TagOptionSingleton.getInstance().getOverrideCharset();
+                    logger.severe(loggingName + "Charset used is:" + charset.displayName());
+                }
             }
 
             //Read data for identifier

@@ -44,6 +44,7 @@ import org.jaudiotagger.tag.vorbiscomment.VorbisAlbumArtistReadOptions;
 import org.jaudiotagger.tag.vorbiscomment.VorbisAlbumArtistSaveOptions;
 
 import java.nio.charset.Charset;
+import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -386,6 +387,9 @@ public class TagOptionSingleton
     private boolean isOverrideCharsetForInfo = false;
 
     private boolean isOverrideCharsetForId3 = false;
+
+    private EnumSet<FieldKey> overrideCharsetFields = EnumSet.noneOf(FieldKey.class);
+
 
     /**
      * 
@@ -967,6 +971,7 @@ public class TagOptionSingleton
         overrideCharset = null;
         isOverrideCharsetForInfo = false;
         isOverrideCharsetForId3 = false;
+        overrideCharsetFields = EnumSet.noneOf(FieldKey.class);
 
         //default all lyrics3 fields to save. id3v1 fields are individual
         // settings. id3v2 fields are always looked at to save.
@@ -1458,5 +1463,15 @@ public class TagOptionSingleton
     public void setOverrideCharsetForId3(boolean isOverrideCharsetForId3)
     {
         this.isOverrideCharsetForId3 = isOverrideCharsetForId3;
+    }
+
+    public void addOverrideCharsetFields(FieldKey fieldKey)
+    {
+        overrideCharsetFields.add(fieldKey);
+    }
+
+    public EnumSet<FieldKey> getOverrideCharsetFields()
+    {
+        return overrideCharsetFields;
     }
 }
