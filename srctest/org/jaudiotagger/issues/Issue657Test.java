@@ -11,6 +11,7 @@ import org.jaudiotagger.tag.reference.ID3V2Version;
 
 import java.io.File;
 import java.nio.charset.Charset;
+import java.util.Map;
 
 /**
  * Test, useful for just reading file info when actually encoded as Japanese
@@ -30,7 +31,8 @@ public class Issue657Test extends AbstractTestCase
         tagOptions.setWavOptions(WavOptions.READ_ID3_ONLY_AND_SYNC);
         tagOptions.setWavSaveOptions(WavSaveOptions.SAVE_ACTIVE);
         tagOptions.setOverrideCharsetForInfo(true);
-        tagOptions.setOverrideCharset(Charset.forName("CP932"));
+        tagOptions.setOverrideCharsetForId3(false);
+        tagOptions.setOverrideCharset(Charset.forName("x-MS932_0213"));
         tagOptions.setResetTextEncodingForExistingFrames(true);
         tagOptions.setID3V2Version(ID3V2Version.ID3_V23);
         tagOptions.addOverrideCharsetFields(FieldKey.ARTIST);

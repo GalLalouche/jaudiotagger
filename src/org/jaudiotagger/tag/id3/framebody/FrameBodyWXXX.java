@@ -134,7 +134,7 @@ public class FrameBodyWXXX extends AbstractFrameBodyUrlLink implements ID3v24Fra
     protected void setupObjectList()
     {
         objectList.add(new NumberHashMap(DataTypes.OBJ_TEXT_ENCODING, this, TextEncoding.TEXT_ENCODING_FIELD_SIZE));
-        objectList.add(new TextEncodedStringNullTerminated(DataTypes.OBJ_DESCRIPTION, this));
+        objectList.add(new TextEncodedStringNullTerminated(DataTypes.OBJ_DESCRIPTION, this, false));
         objectList.add(new StringSizeTerminated(DataTypes.OBJ_URLLINK, this));
     }
 

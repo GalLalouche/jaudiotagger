@@ -40,6 +40,7 @@ public class TextEncodedStringSizeTerminated extends AbstractString
     public TextEncodedStringSizeTerminated(String identifier, AbstractTagFrameBody frameBody)
     {
         super(identifier, frameBody);
+        this.isAllowReadMetadataWithOverrideCharset = true;
     }
 
     /**

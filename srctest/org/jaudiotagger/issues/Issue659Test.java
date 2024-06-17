@@ -29,10 +29,12 @@ public class Issue659Test extends AbstractTestCase
         tagOptions.setToDefault();
         tagOptions.setWavOptions(WavOptions.READ_ID3_ONLY_AND_SYNC);
         tagOptions.setWavSaveOptions(WavSaveOptions.SAVE_ACTIVE);
+        tagOptions.setOverrideCharsetForInfo(false);
         tagOptions.setOverrideCharsetForId3(true);
         tagOptions.setOverrideCharset(Charset.forName("UTF-16"));
         tagOptions.setResetTextEncodingForExistingFrames(true);
         tagOptions.setID3V2Version(ID3V2Version.ID3_V23);
+        tagOptions.addOverrideCharsetFields(FieldKey.ARTIST);
 
         File orig = new File("testdata", "test660.wav");
         if (!orig.isFile())

@@ -6,6 +6,9 @@ import org.jaudiotagger.tag.id3.framebody.FrameBodyUFID;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyWXXX;
 import org.jaudiotagger.tag.id3.valuepair.StandardIPLSKey;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 /**
  * List of known id3v23 metadata fields
  *
@@ -15,6 +18,7 @@ import org.jaudiotagger.tag.id3.valuepair.StandardIPLSKey;
  */
 public enum ID3v23FieldKey
 {
+
 
     ACOUSTID_FINGERPRINT(ID3v23Frames.FRAME_ID_V3_USER_DEFINED_INFO, FrameBodyTXXX.ACOUSTID_FINGERPRINT, Id3FieldType.TEXT),
     ACOUSTID_ID(ID3v23Frames.FRAME_ID_V3_USER_DEFINED_INFO, FrameBodyTXXX.ACOUSTID_ID, Id3FieldType.TEXT),
@@ -270,5 +274,28 @@ public enum ID3v23FieldKey
     public String getFieldName()
     {
         return fieldName;
+    }
+
+    static Map<String,ID3v23FieldKey> frameIdFieldKeyMapping = new LinkedHashMap<String,ID3v23FieldKey>();
+
+    static
+    {
+        for(ID3v23FieldKey field:ID3v23FieldKey.values())
+        {
+            if(field.getSubId()!=null)
+            {
+                frameIdFieldKeyMapping.put(field.getFrameId() + field.getSubId(), field);
+            }
+            else
+            {
+                frameIdFieldKeyMapping.put(field.getFrameId(), field);
+            }
+
+        }
+    }
+
+    public static ID3v23FieldKey getFieldKeyFromFrameId(String frameId)
+    {
+        return frameIdFieldKeyMapping.get(frameId);
     }
 }

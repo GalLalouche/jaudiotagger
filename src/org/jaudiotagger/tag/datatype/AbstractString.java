@@ -23,8 +23,12 @@
  */
 package org.jaudiotagger.tag.datatype;
 
+import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.TagOptionSingleton;
-import org.jaudiotagger.tag.id3.AbstractTagFrameBody;
+import org.jaudiotagger.tag.id3.*;
+import org.jaudiotagger.tag.id3.framebody.FrameBodyCOMM;
+import org.jaudiotagger.tag.id3.framebody.FrameBodyTXXX;
+import org.jaudiotagger.tag.id3.framebody.FrameBodyWXXX;
 import org.jaudiotagger.tag.id3.valuepair.TextEncoding;
 
 import java.nio.ByteBuffer;
@@ -32,12 +36,18 @@ import java.nio.charset.Charset;
 import java.nio.charset.CharsetDecoder;
 import java.nio.charset.CharsetEncoder;
 import java.nio.charset.StandardCharsets;
+import java.util.EnumSet;
 
 /**
  * A partial implementation for String based ID3 fields
  */
 public abstract class AbstractString extends AbstractDataType
 {
+    //When String is used to describe the type of frame such as type of TXXX frame the logic is that this field will not
+    //be incorrectly encoded even if the value is so we dont allow override of charset in these cases by checking the value
+    //of this boolean
+    protected boolean isAllowReadMetadataWithOverrideCharset = false;
+
     /**
      * Creates a new  datatype
      *
@@ -141,12 +151,76 @@ public abstract class AbstractString extends AbstractDataType
      */
     protected CharsetDecoder getCorrectDecoder(ByteBuffer inBuffer)
     {
+        EnumSet<FieldKey> overrideFieldKeys = TagOptionSingleton.getInstance().getOverrideCharsetFields();
         Charset charset = getTextEncodingCharSet();
         if(charset==StandardCharsets.ISO_8859_1
+                && isAllowReadMetadataWithOverrideCharset
                 && TagOptionSingleton.getInstance().isOverrideCharsetForId3()
                 && TagOptionSingleton.getInstance().getOverrideCharset()!=null)
         {
-            charset = TagOptionSingleton.getInstance().getOverrideCharset();
+            //Get generic key based on id
+            ID3v23FieldKey id3v23FieldKey=null;
+            if(frameBody instanceof FrameBodyTXXX)
+            {
+                id3v23FieldKey = ID3v23FieldKey.getFieldKeyFromFrameId(frameBody.getIdentifier() + ((FrameBodyTXXX)frameBody).getDescription());
+            }
+            else if(frameBody instanceof FrameBodyWXXX)
+            {
+                id3v23FieldKey = ID3v23FieldKey.getFieldKeyFromFrameId(frameBody.getIdentifier() + ((FrameBodyWXXX)frameBody).getDescription());
+            }
+            else if(frameBody instanceof FrameBodyCOMM)
+            {
+                id3v23FieldKey = ID3v23FieldKey.getFieldKeyFromFrameId(frameBody.getIdentifier() + ((FrameBodyCOMM)frameBody).getDescription());
+            }
+            else
+            {
+                id3v23FieldKey = ID3v23FieldKey.getFieldKeyFromFrameId(frameBody.getIdentifier());
+            }
+
+            if(id3v23FieldKey!=null)
+            {
+                FieldKey fieldKey = ID3v23Frames.getInstanceOf().getGenericKeyFromId3(id3v23FieldKey);
+                if (fieldKey != null)
+                {
+                    if (overrideFieldKeys.contains(fieldKey))
+                    {
+                        charset = TagOptionSingleton.getInstance().getOverrideCharset();
+                    }
+                }
+            }
+            else
+            {
+                //Get generic key based on id
+                ID3v24FieldKey id3v24FieldKey=null;
+                if(frameBody instanceof FrameBodyTXXX)
+                {
+                    id3v24FieldKey = ID3v24FieldKey.getFieldKeyFromFrameId(frameBody.getIdentifier() + ((FrameBodyTXXX)frameBody).getDescription());
+                }
+                else if(frameBody instanceof FrameBodyWXXX)
+                {
+                    id3v24FieldKey = ID3v24FieldKey.getFieldKeyFromFrameId(frameBody.getIdentifier() + ((FrameBodyWXXX)frameBody).getDescription());
+                }
+                else if(frameBody instanceof FrameBodyCOMM)
+                {
+                    id3v24FieldKey = ID3v24FieldKey.getFieldKeyFromFrameId(frameBody.getIdentifier() + ((FrameBodyCOMM)frameBody).getDescription());
+                }
+                else
+                {
+                    id3v24FieldKey = ID3v24FieldKey.getFieldKeyFromFrameId(frameBody.getIdentifier());
+                }
+
+                if(id3v24FieldKey!=null)
+                {
+                    FieldKey fieldKey = ID3v24Frames.getInstanceOf().getGenericKeyFromId3(id3v24FieldKey);
+                    if (fieldKey != null)
+                    {
+                        if (overrideFieldKeys.contains(fieldKey))
+                        {
+                            charset = TagOptionSingleton.getInstance().getOverrideCharset();
+                        }
+                    }
+                }
+            }
         }
 
         CharsetDecoder decoder=null;
