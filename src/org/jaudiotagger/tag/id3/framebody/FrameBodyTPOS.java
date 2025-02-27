@@ -16,6 +16,8 @@
 package org.jaudiotagger.tag.id3.framebody;
 
 import org.jaudiotagger.tag.InvalidTagException;
+import org.jaudiotagger.tag.datatype.DataTypes;
+import org.jaudiotagger.tag.datatype.PartOfSet;
 import org.jaudiotagger.tag.id3.ID3v24Frames;
 
 import java.nio.ByteBuffer;
@@ -98,7 +100,7 @@ public class FrameBodyTPOS extends AbstractFrameBodyNumberTotal implements ID3v2
 
     public String getDiscNoAsText()
     {
-        return getNumberAsText();
+        return ((PartOfSet.PartOfSetValue)getObjectValue(DataTypes.OBJ_TEXT)).getRawValue();
     }
 
     public void setDiscNo(Integer discNo)
